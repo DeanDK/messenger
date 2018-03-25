@@ -23,11 +23,12 @@ io.on('connection', socket => {
     generateMessage('Admin', 'New user joined')
   );
 
-  socket.on('createMessage', message => {
+  socket.on('createMessage', (message, callback) => {
     console.log('createMessage', message);
     /* io emits event to all available connection
        while socket emits to a single connection */
     io.emit('newMessage', generateMessage(message.from, message.text));
+    callback('This is acknowledment from the server');
   });
 
   socket.on('disconnect', socket => {
