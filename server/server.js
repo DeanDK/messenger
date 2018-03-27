@@ -28,7 +28,7 @@ io.on('connection', socket => {
     /* io emits event to all available connection
        while socket emits to a single connection */
     io.emit('newMessage', generateMessage(message.from, message.text));
-    callback('This is acknowledment from the server');
+    callback();
   });
 
   socket.on('createLocationMessage', coords => {
